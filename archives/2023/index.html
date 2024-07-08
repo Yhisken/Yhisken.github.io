@@ -3,7 +3,7 @@
 <html lang="ch">
     <head>
         <meta charset="utf-8" />
-        <title>Categories: GAMES101 | Yhisken&#39;s blog</title>
+        <title>Archives | Yhisken&#39;s blog</title>
         <meta name="author" content="Yhisken" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -29,6 +29,8 @@
 <script src="/js/lib/preview.js"></script>
 
 
+
+<script src="/js/lib/search.js"></script>
 
 
 
@@ -141,106 +143,119 @@
 
             <transition name="into">
                 <div id="main" v-show="!loading">
-                    <div id="archives">
+                    
+<div id="archives">
     
-    <div class="categories-tags">
-        
-        
-        <span>
-            <a href="/categories/GAMES101/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                GAMES101
-            </a>
-        </span>
-        
-        
-        
-        
-        
-        <span>
-            <a href="/categories/%E6%97%A5%E8%AE%B0/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-bookmark fa-fw"></i>
-                </span>
-                日记
-            </a>
-        </span>
-        
-        
-    </div>
+    <input id="search-bar" class="input" placeholder="搜索" v-model="rawSearch" />
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/3/17</div>
-            <a href="/2023/03/17/2/">
-                <h3>计算机图形学：光栅化</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/GAMES101/">
+    <div id="timeline-wrap" ref="timeline">
+        
+        <div class="timeline" data-title="计算机图形学：mvp变换">
+            <div class="timeline-tail"></div>
+            <div class="timeline-content">
+                <div class="item-time">2023/3/13</div>
+                <a href="/2023/03/13/1/">
+                    <h3>计算机图形学：MVP变换</h3>
+                </a>
+                <div class="info">
+                    
+                    <span class="category">
+                        <a href="/categories/GAMES101/">
+                            <span class="icon">
+                                <i class="fa-solid fa-bookmark fa-fw"></i>
+                            </span>
+                            GAMES101
+                        </a>
+                    </span>
+                    
+                    
+                    <span class="tags">
                         <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                            <i class="fa-solid fa-tags fa-fw"></i>
                         </span>
-                        GAMES101
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
                         
-                        <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" style="color: #00a596">图形学</a>
+                        <span class="tag">
+                            
+                            <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" style="color: #00bcd4">图形学</a>
+                        </span>
+                        
                     </span>
                     
-                </span>
-                
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2023/3/13</div>
-            <a href="/2023/03/13/1/">
-                <h3>计算机图形学：MVP变换</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="/categories/GAMES101/">
+        
+        <div class="timeline" data-title="计算机图形学：光栅化">
+            <div class="timeline-tail"></div>
+            <div class="timeline-content">
+                <div class="item-time">2023/3/17</div>
+                <a href="/2023/03/17/2/">
+                    <h3>计算机图形学：光栅化</h3>
+                </a>
+                <div class="info">
+                    
+                    <span class="category">
+                        <a href="/categories/GAMES101/">
+                            <span class="icon">
+                                <i class="fa-solid fa-bookmark fa-fw"></i>
+                            </span>
+                            GAMES101
+                        </a>
+                    </span>
+                    
+                    
+                    <span class="tags">
                         <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                            <i class="fa-solid fa-tags fa-fw"></i>
                         </span>
-                        GAMES101
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    <span class="tag">
                         
-                        <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" style="color: #ffa2c4">图形学</a>
+                        <span class="tag">
+                            
+                            <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" style="color: #ff7d73">图形学</a>
+                        </span>
+                        
                     </span>
                     
-                </span>
-                
+                </div>
             </div>
         </div>
+        
+        <div class="timeline" data-title="2023年终总结">
+            <div class="timeline-tail"></div>
+            <div class="timeline-content">
+                <div class="item-time">2023/12/31</div>
+                <a href="/2023/12/31/3/">
+                    <h3>2023年终总结</h3>
+                </a>
+                <div class="info">
+                    
+                    <span class="category">
+                        <a href="/categories/%E6%97%A5%E8%AE%B0/">
+                            <span class="icon">
+                                <i class="fa-solid fa-bookmark fa-fw"></i>
+                            </span>
+                            日记
+                        </a>
+                    </span>
+                    
+                    
+                    <span class="tags">
+                        <span class="icon">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </span>
+                        
+                        <span class="tag">
+                            
+                            <a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" style="color: #ff7d73">年终总结</a>
+                        </span>
+                        
+                    </span>
+                    
+                </div>
+            </div>
+        </div>
+        
     </div>
-    
 </div>
 
                     <footer id="footer">
