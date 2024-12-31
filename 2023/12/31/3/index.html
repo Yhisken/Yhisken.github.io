@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="ch">
+    <head>
+        <meta charset="utf-8" />
+        <title>2023年终总结 | Yhisken&#39;s blog</title>
+        <meta name="author" content="Yhisken" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/favicon.png" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/twikoo/1.6.16/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div id="desktop-menu">
+        <a class="title" href="/">
+            <span>YHISKEN&#39;S BLOG</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://yhisken.github.io/">
+            <i class="fa-solid fa-主页 fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;文章</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;归档</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YHISKEN&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a target="_blank" rel="noopener" href="https://yhisken.github.io/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-主页 fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">文章</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </div>
+</nav>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <transition name="into">
+                <div id="main" v-show="!loading">
+                    <div class="article">
+    <div>
+        <h1>2023年终总结</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/12/31
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E6%97%A5%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                日记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" style="color: #ff7d73">年终总结</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <blockquote>
+<p>现在是2023.12.29，离今年结束还有两天的时间，为什么我不在最后一天写呢？一是怕写不完，二是现在是晚上10点多了，本来想再读读Unity的源码，但是读不下去了，索性就不读了，干一些不需要脑子的体力活吧。是的，写流水账完全不需要脑子。我现在好像每年都会写那么一两次流水账，但是我不会无病呻吟，我只是想把我经历的东西和个人的成长总结一下，虽然这可能不符合我平常留给公众的印象。</p>
+</blockquote>
+<blockquote>
+<p>2023年就这么结束了，这一年怎么说呢，过的很快，哪怕到现在我也丝毫查询不到一些没什么印象的时光，有印象的大概只是年初刚过完年就急急忙忙回到学校，到底也是摆烂了，没有学什么东西，开学前去医院不下七八次，也没弄出个所以然。年初的印象只停留在得了新冠咳了两个月吧。至少1到3月中下旬大底可以说是今年度过的最难受的一段时光。3到7月，这是我的大二下学期，可以说对我来说提升并不大，我只是把以前的知识重新复习了一遍。以前束缚我手脚的东西仍然束缚着我的手脚。但是好在它们比以前松了许多。说实话，哪怕是现在我也一直在焦虑，焦虑我的能力，有客观原因也有主观原因。客观原因是所处的环境确实让我提不起劲头。主观原因是，我意识到了，我尽力摆脱的填鸭式学习，貌似仍然没有摆脱掉，如果这个改不了，我想我无论到哪里，做什么，选什么样的路，最终都会成为我以前眼中的一事无成的人。学期初很开心能得到个别老师的赏识，但是也并不开心，还想着我上大学之前，我幻想着能遇到志同道合的同学，能因材施教的老师，现在看来完全是空谈。当然我并不否认任何人在任何一方面可能比我强的事实。但事实就是，如果一个人如果没能达到我的预期，我就会不想去从他身上学习任何东西。可能有人会说，成绩比你好的不都是比你强的吗？这点我不想再解释了。只能说我很庆幸自己选择了计算机，选择了未来想入游戏行业，庆幸选择了图形学和渲染，虽然以我的水平，可以说还没入门，但是自学这些东西的途中，我能感受的到，什么是真正能提升水平的，什么是可以锻炼能力的。这么多年，我的一些毛病仍然没改掉，这确实是不应该，但是能怎么办呢，人可能最难说服的就是自己，我的强迫症，精神洁癖，实用主义等等等等这些，随之而来反噬的就是数不清日子的焦虑和彻夜难眠，100片褪黑素才勉强保证我今年的睡眠质量。好了，BB了这么多，也没总结个所以然，就当是精神分裂的自言自语得了。</p>
+</blockquote>
+<blockquote>
+<p>今年可能最充实的一段时光就是暑假了，其实也不算充实，总结起来就三件事，做了个游戏，去实习了一下，另外参加了个清华的夏令营。第一次做游戏这段经历对我来说可以说是今年印象最深刻的事情之一，眼睁睁看着自己和队友的想法通过大家的共同努力一步步变成现实这个过程是最让人兴奋的。其次是实习，严格来说这段实习经历对我来说不算多，但是我还是庆幸自己的实习岗位起码是和专业所学相关的，而不是什么没有技术含量的工作。</p>
+</blockquote>
+<blockquote>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;昨天写到这里被队友叫去改BUG了，分辨率不同步的问题，改了两个小时也没改完索性就直接睡觉去了，所以现在是12.30早上11：41，我9点多睡醒，刷了会手机，发了会呆，就到现在了，饭还没吃，因为我不想吃，我现在想随性一点。说白了我现在经常焦虑的原因还是太容易给自己设定条条框框了，这跟我的原生家庭可能有点关系，几点必须吃饭，每天必须吃几顿，几点必须睡觉等等。如果在规定的时候没完成，心里就始终有一种不自在的感觉，所以我想尽量脱离这种感觉，以前我不知道自己经常焦虑的原因是什么，但是今年看过一个心理相关的视频之后，好像就明白了。</p>
+</blockquote>
+<p><img src="/./../images/2023final/image1.png"></p>
+<blockquote>
+<p>我何尝不是相当前者，却总时当后者。</p>
+</blockquote>
+<blockquote>
+<p>总结到哪里来着，哦对，是实习。实习持续了不到两个月，不算长，我也说了，我个人觉得提升也不大，提升大概是抗压能力，毕竟每天两个多小时的地铁通勤不是谁都能受得了的。你还会经常碰到煞笔的路人，挡你的路，在你旁边外放短视频，大声打电话，人挤人地铁，任凭自己家小孩在公共场合大吵大闹。以及暑假时的几次台风，我没带伞让我浇成落汤鸡，很狼狈，但也只有我自己觉得狼狈。实习只让我知道了一件事，脱离学校进入社会之后，我要考虑的事情会变得很多很多。但好在之后我不用懵懂无知的迈入社会了。</p>
+</blockquote>
+<blockquote>
+<p> 实习期间，我参加了游戏开发实训，清华的夏令营，游戏开发实训就不用多说了，那段时间虽然很累，但是最终看到成品的时候，我们所有人都很开心，虽然它并不完美。CCF夏令营让我有机会和学术大佬们同框，听他们的课，荣幸之余的同时，我也看到了，抛开自己的学校外，优秀的人几乎随处可见，只能说压力和期望并存，这段经历让我更想去看看其它的地方有些什么，我希望快点毕业去看看，也担心毕业太快自己的成长跟不上外面对我的要求。有机会的话，北上广深我都想去看看，在有限的时间，我想多去一些地方，多认识一些人，多经历一些事。我想在今年的最后许下几个愿望，希望它们以后都能实现，与其说是愿望，不如说是我的人生目标。：</p>
+</blockquote>
+<ol>
+<li><strong>在自己喜欢的领域有所成就，小小的成就也好，只要自己满意。</strong></li>
+<li><strong>有一份自己喜欢的工作，并且能养活父母，起码衣食不愁</strong></li>
+<li><strong><del>有一个值得自己去爱的人，并且和她一起</del>去看绚丽夺目的银河</strong></li>
+</ol>
+<blockquote>
+<p>直到现在，我仍然觉得，如果让我去做我不喜欢做的事情，寥寥无为的度过一生，那就和行尸走肉没什么区别，那人生就完全没有意义。这可能也是我之前自负的基础，因为我身边的人最少80%都是这样，为了所谓的稳定，为了所谓的听从安排，或者是压根没有自己的想法，随大流的人。当一切都变得功利化，那么那个行业，那群人就不会有任何动力，也没有任何希望了。我时常在想人和动物的区别是什么呢?动物的所有目的只为了一个东西，那就是活着，和让种族延续，于是它们的基本功能就只有吃和繁殖。但是人不同，人有脑子，或者说更大的脑子，工作是为了吃，结婚是为了繁殖，那如果只有这两种行为，我想人和动物的区别也不过如此。也可以说没有区别。至少我认为，能称之为人的，起码要有一技之长，或者说自己热爱的某些东西，这样活着才有价值。另外在这里我想提一个我非常不想提，平时也基本不提的话题，那就是情感话题，可能是从小被关心的麻木了或者说是压根没被关心过，总之我对别人的关心这种东西基本很难察觉，我也从来不怎么主动关心别人，但貌似这是人类推进情感的一种方式。我至今唯一感动的一次是上初一的时候，当时我的笔的笔盖总时丢，因为水性笔，笔盖丢了相当于整支笔都废掉了，我当时还是很节俭的，因为丢了一个小笔盖导致整个笔都废掉，在我眼里就是犯了大罪一样，直到丢了四五次之后，有一次我的整支笔都丢了，然后我就非常生气，于是就像所有小孩子一样，我就告诉了老师，老师当着全班的面说，大男孩丢个笔就丢一个吧，但是老师不知道的是我之前已经丢了好多次了，在当时节俭的我眼里，这有多难受。然后我就哭了，至于是很大声的哭还是小声的掉眼泪我不记得了，我只记得老师说了，大男孩了还因为丢个笔盖哭，当时全班的人都在嘲笑我。那节课自习下课之后，我后桌的女孩碰了碰我，说把她的笔给我吧，让我别难过了。当时那种感觉，至今我没有过第二次。那是我至今唯一一次对异性有好感，不知道她当时是故意哄我还是无意而为之，但是总之我印象很深，毕竟人家当时学习也是班级前三前二的水平。不幸的是初二的时候就分班了，我再见到她的时候是高中，可以那时候的她已经不是我认识的那个她了。人可能都是会变的吧，但至少我还是有过被感动的时候的不是吗。</p>
+</blockquote>
+<blockquote>
+<p>至少我知道，在所有人都嘲笑你怀疑你的时候，有一个人帮助你相信你，这可能是我这辈子都不会遇到第二次的事情了。而现在的我也多了个心眼，当对方怀着好意接近的时候，我一本一眼就能分辨出对方是有求于我，还是真心的，毕竟长大就是要学会这些东西嘛</p>
+</blockquote>
+<p><img src="/./../images/2023final/image2.jpg"></p>
+<blockquote>
+<p>好了，说了这么多假大空的东西，我想提前计划一下明年，明年大概是我在学校的最后一年了，因为大四下没有课，肯定是要去实习找工作的。我想在明年年初的时候，做一个3D项目，是的，玩了这么长时间的Shader和U3D，不去实践一下怎么能行，所以明年一月的GGJ2024，希望能找一个3D的团队。俗话说是骡子是马拉出来溜溜。至于课外学习方面，老实说我不知道要学什么了，有点迷茫，倒不是说东西学完了，而是不知道接下来还有什么需要用到的没有学，不过我想，走一步看一步吧。</p>
+</blockquote>
+<blockquote>
+<p>今年的12月还有一个事情非常有意思，某草案导致的骨架大跌，说实话我也有点被吓到了，甚至直接去搜了国内做渲染的导师准备去考研了，后来虚惊一场后，我打算在观望观望再说，毕竟直接就业做游戏是我的首选项。希望在今后的N年，我的冲劲能始终维持下去，以前的我喜欢瞻前顾后，喜欢三思而后行，喜欢考虑突发的各种情况，而现在我更多的时候会不计后果的做一些东西，尤其是自己热爱的方面，我只需要考虑一种情况就好，那就是最坏的情况，如果我能接受，那么大胆去做便可。</p>
+</blockquote>
+<blockquote>
+<p>最后想放几张今年的照片，我从来不自拍也不摆拍，但很高兴总有人能在我经历的重要时刻帮我记录下来这些精彩瞬间。</p>
+<p>UGDAP线下巡游北京站，体验独立游戏中</p>
+<p><img src="/./../images/2023final/image3.jpg"></p>
+</blockquote>
+<blockquote>
+<p>实习，工位上</p>
+<p><img src="/./../images/2023final/image4.jpg"></p>
+</blockquote>
+<blockquote>
+<p>Unreal Circle 虚幻引擎线下技术沙龙</p>
+<p><img src="/./../images/2023final/image5.jpg"></p>
+</blockquote>
+<blockquote>
+<p>实习，部门聚餐，K歌</p>
+<p><img src="/./../images/2023final/image6.png"></p>
+</blockquote>
+<blockquote>
+<p>今年算是比较充实的一年，多的图片就不想放了，直接小结一下吧</p>
+<ol>
+<li>第二次复习GAMES101完全弄懂</li>
+<li>Ureal Circle 2023 线下技术沙龙 北京站</li>
+<li>Unity Open Day 技术开放日 2023 北京站</li>
+<li>暑期实习：技术美术</li>
+<li>UGDAP暑期6天游戏开发实训</li>
+<li>CCF 2023 图形学启明星夏令营 （线下）</li>
+<li>CSDN博客 游戏领域文章 最优名次 第15名</li>
+<li>三七互娱高校 “创想+” 微创新大赛，小游戏赛道</li>
+<li>学习虚幻5，简单搭建了一个小场景</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>另外，我想克服所有的焦虑沉下心去学习。庞杂的知识让我今年有点手足无措，我想在以后把我浅尝辄止的东西在以后有机会沉下心去都弄完。</p>
+</blockquote>
+<blockquote>
+<p>希望明年再接再厉 																																					— Yhisken 2023.12.30</p>
+</blockquote>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Yhisken&#39;s blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yhisken
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+                </div>
+            </transition>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
+
+
+        
+    </body>
+</html>

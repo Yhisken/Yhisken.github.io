@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="ch">
+    <head>
+        <meta charset="utf-8" />
+        <title>计算机图形学：光栅化 | Yhisken&#39;s blog</title>
+        <meta name="author" content="Yhisken" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/favicon.png" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/twikoo/1.6.16/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div id="desktop-menu">
+        <a class="title" href="/">
+            <span>YHISKEN&#39;S BLOG</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://yhisken.github.io/">
+            <i class="fa-solid fa-主页 fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;文章</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;归档</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YHISKEN&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a target="_blank" rel="noopener" href="https://yhisken.github.io/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-主页 fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">文章</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </div>
+</nav>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <transition name="into">
+                <div id="main" v-show="!loading">
+                    <div class="article">
+    <div>
+        <h1>计算机图形学：光栅化</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/17
+        </span>
+        
+        <span class="category">
+            <a href="/categories/GAMES101/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                GAMES101
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" style="color: #ff7d73">图形学</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><blockquote>
+<p>经过上篇文章，大家已经了解了整个MVP 变换的过程，但是正如我前篇所说，在完成了MVP变换之后，我们只是把 3D 场景变成二维图像的准备工作做完了，而如何把图像“画”在显示器上，还需要进一步的操作，也就是本文要讲解的光栅化。</p>
+</blockquote>
+<h1 id="二、屏幕映射"><a href="#二、屏幕映射" class="headerlink" title="二、屏幕映射"></a>二、屏幕映射</h1><blockquote>
+<p>我们知道，经过MVP 变换之后，我们已经把视锥体变成了一个标准的正则立方体，接下来我们还要进行最后一步变换，把图像变换至屏幕空间。</p>
+<p>1. 屏幕空间的定义：本质上是一个二维数组，而每个元素储存的是一个n 元组，每个元组可储存颜色信息如：R、G、B 的值或其它信息(如灰度)，而每个元素对应着一个像素。同时定义其分辨率为width*height。如下图为一个 4x3 分辨率的屏幕。</p>
+<p><img src="/./images/2/image4.png"></p>
+<p>同时定义每个像素的坐标为(width-1,height-1)，例如上图蓝色的像素坐标为(2,1)。 则像素的中心的坐标为(x+0.5,y+0.5)。则整个屏幕覆盖范围从(0,0)到(width,height)。那么如何将上节我们说的 3 维的边长为 2 的正则立方体变换成屏幕空间的二维图像呢？学完基础的变换我们应该能很容易写出这个变换矩阵，这里不做赘述。如图：</p>
+<p><img src="/./images/2/image6.jpeg"></p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/2/image7.png"></p>
+</blockquote>
+<h1 id="三、光栅化"><a href="#三、光栅化" class="headerlink" title="三、光栅化"></a>三、光栅化</h1><blockquote>
+<p>我们知道所有模型都是由多边形组成的，而多边形的面数决定了模型的光滑程度，而组成模型的最基本图形是三角形，这些三角形的顶点在经过变换投影到屏幕上后仍然为三角形，而通过知道这些三角形覆盖了哪些像素从而在屏幕上采样，进而画出一张该模型二为图像的过程就称作光栅化。</p>
+</blockquote>
+<blockquote>
+<p>为什么要用三角形？因为它有很多优点。</p>
+</blockquote>
+<ol>
+<li><p>首先三角形是最基础的多边形。</p>
+</li>
+<li><p>其次任何多边形都可以拆成三角形。</p>
+</li>
+<li><p>且三角形的三个点可以直接确定一个平面。</p>
+</li>
+<li><p>点在三角形的内外关系可以通过叉积也就是cross 清楚的知道。</p>
+</li>
+<li><p>只要知道了三角形的三个点的顶点属性，就可以通过插值计算出三角形内所有点的属性。</p>
+</li>
+</ol>
+<p><img src="/./images/2/image12.png"></p>
+<blockquote>
+<p>如上图是一个三角形投影在光栅化后的样子，经过光栅化采样之后变成如下图所示</p>
+<p>在逐行扫描之后，三角形中间的像素的参数会由三角形顶点的信息差值获得。(如深度，颜色等等 )</p>
+</blockquote>
+<p><img src="/./images/2/image13.png"></p>
+<blockquote>
+<p>默认情况下，我们的采样采用逐行扫描，逐行判断每个像素是否在三角形内。但是这显然不够经济，实际上我们对一个有限大小的三角形只需要扫描一块特定大小的正方形即可，而这就是包围盒，如下图：</p>
+<p><img src="/./images/2/image16.png"></p>
+<p>如何构造这么一个包围盒呢我们假设三角形的三个点如上图为P0,P1,P2。那么包围盒的坐标很好得出：</p>
+<p>x 的最右坐标即为Max(x 坐标){P0，P1，P2}，x 的最左坐标即为Min(x 坐标){P0，P1，P2} y 坐标同理，不做赘述。</p>
+</blockquote>
+<blockquote>
+<p>对每行的最左最右逐行扫描，这样能避免因狭长型三角形而产生大包围盒的浪费。如下图：<br><img src="/./images/2/image21.png"><br>此方法很复杂，有兴趣的朋友可以自行搜索了解。</p>
+</blockquote>
+<h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1X7411F744/?spm_id_from=333.337.search-card.all.click&vd_source=276d16640b32a829ed82867597a8f210">GAMES101- 现代计算机图形学入门<del>-</del> 闫令琪_哔哩哔哩_bilibili</a></p>
+<p>《Unity Shader 入门精要》</p>
+</blockquote>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Yhisken&#39;s blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yhisken
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+                </div>
+            </transition>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
+
+
+        
+    </body>
+</html>

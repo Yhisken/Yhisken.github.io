@@ -1,0 +1,407 @@
+
+<!DOCTYPE html>
+<html lang="ch">
+    <head>
+        <meta charset="utf-8" />
+        <title>计算机图形学：MVP变换 | Yhisken&#39;s blog</title>
+        <meta name="author" content="Yhisken" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/favicon.png" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/twikoo/1.6.16/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div id="desktop-menu">
+        <a class="title" href="/">
+            <span>YHISKEN&#39;S BLOG</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://yhisken.github.io/">
+            <i class="fa-solid fa-主页 fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;文章</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;归档</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YHISKEN&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a target="_blank" rel="noopener" href="https://yhisken.github.io/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-主页 fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">文章</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </div>
+</nav>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <transition name="into">
+                <div id="main" v-show="!loading">
+                    <div class="article">
+    <div>
+        <h1>计算机图形学：MVP变换</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/13
+        </span>
+        
+        <span class="category">
+            <a href="/categories/GAMES101/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                GAMES101
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%9B%BE%E5%BD%A2%E5%AD%A6/" style="color: #03a9f4">图形学</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h1 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h1><blockquote>
+<p>本文章将着重讲解图形学中的<strong>MVP矩阵变换</strong>，更注重当前阶段的理解，而不是纵观全局，如果想纵观全局，网上有很多资料，也可以等我更新，不过在这里，我不会给大家一个宏观的概念，也不会去细扣渲染管线。适用于刚接触图形学的新手，(本校数媒专业上完前两周图形学的人)。这部分知识在<strong>GAMES101</strong>也有，我上学期已经看过了，所以对我来说是复习回顾，对各位来说是前瞻预习，想学好任何一门知识，刨根问到底的精神是必不可少的，图形学也是一样，值得一提的是，图形学发展至今，其中有许多定义都是人为规定的，大多是为了简化计算和理解，所以问到这个维度的时候，一般来说已经是问到底了，所以不必再深追究。本文对我来说也算是一个学习记录&#x2F;复习回顾，有错误还请各位指出，我会虚心改正。</p>
+</blockquote>
+<h1 id="二、关于MVP变换"><a href="#二、关于MVP变换" class="headerlink" title="二、关于MVP变换"></a>二、关于MVP变换</h1><h2 id="1-什么是MVP变换："><a href="#1-什么是MVP变换：" class="headerlink" title="1.什么是MVP变换："></a>1.什么是MVP变换：</h2><blockquote>
+<p>上了第二周的课程，相信大家已经回顾起了线性代数的基础矩阵运算，这里不带大家回顾了，因为很简单。同时第二周的课上老师也讲了二维的图形变换，那么MVP变换是在三维空间下的变换，也就是4个维度的矩阵(齐次坐标)，它的目的是为了把3D场景投影成2D图像显示在显示器上，值得一提的是<em>MVP变换并没有直接把场景投影在屏幕，而只是再为投影做准备</em>，想要投影到屏幕上还需要后面的许多操作运算来完成。</p>
+</blockquote>
+<h2 id="2-MVP矩阵的构成："><a href="#2-MVP矩阵的构成：" class="headerlink" title="2. MVP矩阵的构成："></a>2. MVP矩阵的构成：</h2><blockquote>
+<p>MVP矩阵顾名思义，它是由<strong>M,V,P</strong>三个矩阵组够成的矩阵，其中M为<strong>模型矩阵</strong>，V为<strong>视图矩阵</strong>，P为<strong>投影矩阵</strong>。M矩阵用来将物体顶点在<strong>模型空间</strong>下的坐标转换为在<strong>世界空间</strong>下的坐标，V矩阵用来将物体顶点在世界空间下的坐标转换为<strong>视图空间</strong>下的坐标。P矩阵用来将物体顶点在视图空间的坐标转换为<strong>裁剪空间</strong>的坐标。M矩阵包括<strong>平移矩阵、旋转矩阵、缩放矩阵</strong>。V矩阵包括<strong>旋转矩阵，平移矩阵</strong>。P矩阵则包括<strong>正交投影矩阵</strong>和<strong>透视投影矩阵</strong>。</p>
+</blockquote>
+<h2 id="3-各个空间的理解："><a href="#3-各个空间的理解：" class="headerlink" title="3. 各个空间的理解："></a>3. 各个空间的理解：</h2><h3 id="1-模型空间："><a href="#1-模型空间：" class="headerlink" title="(1)模型空间："></a>(1)模型空间：</h3><blockquote>
+<p>模型空间是以模型某一点为原点建立坐标系而形成的空间，模型的个顶点最开始是以模型空间坐标系的坐标。</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image1.png"><strong>如图为Unity中的猴头模型，该坐标系是模型空间的坐标系</strong></p>
+</blockquote>
+<h3 id="2-世界空间："><a href="#2-世界空间：" class="headerlink" title="(2)世界空间："></a>(2)世界空间：</h3><blockquote>
+<p>世界空间顾名思义就是以世界原点为原点建立的坐标系。显然可以知道，这与模型空间是两套坐标系，那么此时计算时就要进行相对的计算很麻烦，所以用M矩阵把模型顶点坐标从模型空间都转到世界空间有利于简化后面的计算，这也就是为什么我们要进行模型变换。</p>
+</blockquote>
+<h3 id="3-视图空间："><a href="#3-视图空间：" class="headerlink" title="(3)视图空间："></a>(3)视图空间：</h3><blockquote>
+<p>视图空间是以摄像机为原点建立坐标系的空间。我们最终想要的显示在屏幕上的结果是由摄像机决定的，所以世界空间显得不那么主要，而转到以摄像机为原点的视图空间有利于我们计算投影到屏幕上的图像，这就是为什么要用V矩阵把世界空间下的顶点坐标转到视图空间的原因。</p>
+</blockquote>
+<h3 id="4-裁剪空间："><a href="#4-裁剪空间：" class="headerlink" title="(4)裁剪空间："></a>(4)裁剪空间：</h3><blockquote>
+<p>人的视野是有限的，摄像机也是一样，在计算机中，摄像机的视野范围被一个叫<strong>视锥</strong>的东西决定着，它决定了我们能看到的范围，在视锥外，因为视野受限我们看不到任何东西。而看到的大小都落在视锥内。</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image2.png"><strong>视锥图示</strong></p>
+</blockquote>
+<h1 id="三、各个矩阵的详细理解"><a href="#三、各个矩阵的详细理解" class="headerlink" title="三、各个矩阵的详细理解"></a>三、各个矩阵的详细理解</h1><h2 id="模型矩阵："><a href="#模型矩阵：" class="headerlink" title="模型矩阵："></a>模型矩阵：</h2><p>我们先来确定一下我们的已知量：</p>
+<blockquote>
+<ol>
+<li>模型空间坐标原点在世界空间的位置</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>模型空间坐标系在世界空间的旋转信息</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>模型空间坐标系在世界空间的缩放信息</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>有了这几个已知量，根据世界空间的相对位置，相对旋转和相对缩放信息，很容易得到模型变换的矩阵，也就是三个三维空间下的基础变换矩阵，从左至右依次为[平移]*[旋转]*[缩放]</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image3.png"><strong>这里只是个例子，实际缩放多少，旋转多少，以哪个轴旋转，平移多少视情况而定</strong></p>
+</blockquote>
+<h2 id="视图矩阵："><a href="#视图矩阵：" class="headerlink" title="视图矩阵："></a>视图矩阵：</h2><p>我们同样确定一下已知量：</p>
+<blockquote>
+<ol>
+<li>摄像机在世界空间的位置</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="2">
+<li>摄像机的向上方向y (确保摄像机的摄像头不会歪)</li>
+</ol>
+</blockquote>
+<blockquote>
+<ol start="3">
+<li>摄像机的朝向-z (-z方向方便之后的计算)</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>这里的推导参照GAMES101的推导便于理解，我们想把物体从世界空间坐标系下转换到视图空间坐标系下，为了便于理解我们这样想，将世界空间下的坐标转换为视图空间下的坐标，可以逆向思考为把摄像机放到世界坐标原点，而物体随摄像机相对移动，那么最终呈现的结果是一样的，当然这里并不是真的把摄像机移动到世界坐标原点，而是相对的，如果真的做此操作，那么世界坐标原点也会随之相对移动。总之正向理解和反向理解虽然不同，但最终得出的V矩阵是相同的。那么按我们的反向理解，将摄像机通过平移旋转，来将视图空间的坐标系与被相对移动之前世界空间坐标系对齐即可。</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image4.png"><img src="/./images/3333/image5.png"></p>
+</blockquote>
+<blockquote>
+<p>不知道大家还是否记得，旋转矩阵是一个<strong>正交矩阵</strong>，所以正交矩阵的逆就是它的转置，所以如图：<img src="/./images/3333/image6.png">最终得出V矩阵 ：<strong>Mview</strong> &#x3D; Rview*Tview (顺序不可调换)</p>
+</blockquote>
+<h2 id="投影矩阵："><a href="#投影矩阵：" class="headerlink" title="投影矩阵："></a>投影矩阵：</h2><blockquote>
+<p>投影矩阵分为<strong>正交投影矩阵</strong>和<strong>透视投影矩阵，</strong>先做透视投影，再做正交投影。</p>
+</blockquote>
+<h3 id="1-透视投影和正交投影的区别："><a href="#1-透视投影和正交投影的区别：" class="headerlink" title="(1)透视投影和正交投影的区别："></a>(1)透视投影和正交投影的区别：</h3><blockquote>
+<p><img src="/./images/3333/image7.png"><strong>左：透视投影 右：正交投影</strong></p>
+</blockquote>
+<blockquote>
+<p>简单的说，透视投影符合我们人眼的视觉也就是近大远小，平行线远处相交(如看向远处的火车铁轨)</p>
+</blockquote>
+<blockquote>
+<p>正交投影不改变大小，没有近大远小，且平行线永远平行。</p>
+</blockquote>
+<h3 id="2-透视投影矩阵："><a href="#2-透视投影矩阵：" class="headerlink" title="(2)透视投影矩阵："></a>(2)透视投影矩阵：</h3><blockquote>
+<p>前面我们说了我们要先做透视投影矩阵再做正交投影矩阵，而透视投影矩阵实际上是把我们前面说的<strong>视锥</strong>，也就是四棱台压缩成正交投影中的长方体的样子的过程。这是一个相当复杂的变换过程，但有几点我们是可以根据经验直接确定的。</p>
+</blockquote>
+<blockquote>
+<p>首先，规定近平面和远平面也就是上图所写的Near clip plane和Far clip plane。</p>
+</blockquote>
+<blockquote>
+<p>然后，我们发现当进行压缩时，近平面的坐标是不变的，而远平面的中心点不变。</p>
+</blockquote>
+<blockquote>
+<p>那么我们总体的过程就是先挤压远平面到和近平面相同的大小，再进行正交投影。</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image8.png">那么我们假设如上图规定近平面和远平面一点的坐标分别为(x’,y’,z’,1)和(x,y,z,1)</p>
+</blockquote>
+<blockquote>
+<p>图中有一些误解，这里我把摄像机到远平面的距离改为小写的 ‘ z ‘ ，到近平面的距离仍然为小写的n。</p>
+</blockquote>
+<blockquote>
+<p>这个小写的z待会还会用f来替代(意为far，”远”)。由此我们得出映射关系n&#x2F;z或者说n&#x2F;f。</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image9.png">那么再根据齐次坐标可知，我们都乘以z，那么坐标表示的在空间的位置是不变的，如上图。</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image10.png">到了这一步我们可以根据变换后的坐标写出该4X4矩阵的1，2，4行，那么只剩第三行没有解决<strong>如上图。</strong></p>
+</blockquote>
+<blockquote>
+<p>这里就需要用到我们前面提到的判断，我们虽然不知道常规点是怎么动的但是我们可以找特殊点，而特殊点一定符合规律，通过前面我们可知，近平面上的点不变，远平面的中心点不变。</p>
+</blockquote>
+<blockquote>
+<p>那么先将近平面的点坐标带入我们刚才得到的未知量方程，得到如下图：</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image11.png">将我们的矩阵第三行未知量分别设为(0,0,A,B)，因为n的平方和x，y没有关系。再根据近平面的点列方程可得如下图：(远平面同理，如下图第二个公式)</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image12.png">最终可得到关于A,B的两个方程，n，f分别为近平面到摄像机的距离和远平面到摄像机的距离为已知量。</p>
+</blockquote>
+<blockquote>
+<p>两个方程，两个未知数，可解，可得：如下图：</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image13.png">再把AB带回原矩阵即可得到透视投影矩阵</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image14.png"></p>
+</blockquote>
+<h3 id="3-正交投影矩阵："><a href="#3-正交投影矩阵：" class="headerlink" title="(3)正交投影矩阵："></a>(3)正交投影矩阵：</h3><blockquote>
+<p>经过透视投影矩阵，我们的视锥体(棱台)已经被挤压成视景体(长方体)了，且内部并不均匀(形成了近大远小的效果)，下一步，就是进行正交投影。</p>
+</blockquote>
+<blockquote>
+<p>我们先把视景体捏成一个正则立方体也就是，三个轴的坐标都在[-1,1]范围内的立方体，并且将中心移到原点，这样方便之后的各种操作计算。过程如下图：</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image15.png">规定了各个面的坐标，那么缩放矩阵(使用2做归一化处理)，平移矩阵都很好得出，如下图</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image16.png">而在视锥体中，由于f为远平面的中心点，该矩阵还可以简化为如下图：</p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image17.png"><strong>(4)投影矩阵合体：</strong></p>
+</blockquote>
+<blockquote>
+<p><img src="/./images/3333/image18.png"></p>
+</blockquote>
+<h1 id="四、总结"><a href="#四、总结" class="headerlink" title="四、总结"></a>四、总结</h1><blockquote>
+<p>那么到此，MVP矩阵就都详细给大家介绍一遍了，即使是这么复杂的变换过程，在计算机的渲染管线中，也不过是微乎其微的一步操作而已，而GPU的并行架构还会在同一时间处理场景内的上千万个物体的顶点。关于MVP变换我自己也死磕了很长时间，所以大家如果有不理解的地方也是正常的，我和ChatGpt对线了足足2个小时，才把每个过程的细节和原理真正的搞清楚，虽然不推荐大家和我一样的做法，但是确实能让思路通透不少，最后感谢观看，喜欢请点赞收藏，谢谢。</p>
+</blockquote>
+<h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1X7411F744/?spm_id_from=333.337.search-card.all.click&vd_source=276d16640b32a829ed82867597a8f210"><strong>GAMES101-现代计算机图形学入门-闫令琪_哔哩哔哩_bilibili</strong></a></p>
+</blockquote>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2025 Yhisken&#39;s blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yhisken
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+                </div>
+            </transition>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
+
+
+        
+    </body>
+</html>
