@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="ch">
+    <head>
+        <meta charset="utf-8" />
+        <title>2025年终总结 | Yhisken&#39;s blog</title>
+        <meta name="author" content="Yhisken" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/favicon.png" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.staticfile.org/twikoo/1.6.16/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <nav id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <div id="desktop-menu">
+        <a class="title" href="/">
+            <span>YHISKEN&#39;S BLOG</span>
+        </a>
+        
+        <a target="_blank" rel="noopener" href="https://yhisken.github.io/">
+            <i class="fa-solid fa-主页 fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;文章</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;归档</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;YHISKEN&#39;S BLOG</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a target="_blank" rel="noopener" href="https://yhisken.github.io/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-主页 fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">关于</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">文章</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">归档</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </div>
+</nav>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <transition name="into">
+                <div id="main" v-show="!loading">
+                    <div class="article">
+    <div>
+        <h1>2025年终总结</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2026/1/1
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E6%97%A5%E8%AE%B0/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                日记
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/" style="color: #03a9f4">年终总结</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <blockquote>
+<p>现在已经是2026.1.1了，刚刚过去半个多小时吧，00点36分。本来想着早点写完，没想到还是拖到了现在。没办法刚打完大乱斗，还沉浸在失去虚幻武器+面包黄油+秘术冲拳 的人马的痛苦之中。</p>
+</blockquote>
+<blockquote>
+<p>看了一下，貌似前两年年初年底的这段时间里好像状态其实都不怎么好，2023年因为什么糟心已经忘的差不多了，但今年(2025)的痛苦确实记忆尤新。（想回忆一下前些年的痛苦，想了想索性还是算了，毕竟这是属于2025的文章，貌似只有闲得发慌且内心失落的时候，我才会有充足的动力写这种东西，而现在的我显然不是这种状态，只想快快写完然后睡觉）。</p>
+</blockquote>
+<blockquote>
+<p>原本以为去年才是最跌宕起伏的一年，没想到今年是更奔波劳碌的一年，虽然在我今年1.6离职的时候就应该预料到的</p>
+<img src="./../images/2025final/1.jpg" style="zoom:33%;">
+
+<p><img src="/./../images/2025final/2.jpg" alt="2"></p>
+<img src="./../images/2025final/3.jpg" style="zoom:33%;">
+
+<p>其实如果把2024的总结接起来，那它的后续其实就是这样了，元旦后被通知每周上6休1，加上10:00-23:00的作息，有宿舍固然好，但每天睁眼闭眼就是上班，外加压榨模式，再加上我的校招小伙伴直接跑路，是个人肯定都跑路了。1.6号我坐着飞机从上海飞回了北京，准备度过最后半年的校园时光的最后一个寒假前夕。（去机场路上的出租车开的真快，真的感觉自己要飞出去了）（话说去年其实在深圳打车就已经有阴影了，我还以为大城市除了北京的出租车司机都有路怒症，看来只有广州和深圳这样子了）</p>
+</blockquote>
+<blockquote>
+<p>接着时间来到了2月末，经过了一个 寒假，其实作品集该准备的都准备的差不多了，毕设也做得差不多了，虽然我的论文没写。</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1ShPTezEZ9/?spm_id_from=333.999.0.0">【纪念向】一个数媒大学生的合订本v0.1_哔哩哔哩_bilibili</a>（很抱歉四年只能憋出这么一坨，但我真的尽力了（贫民））</p>
+<p>2月末，我其实已经开始投春招了，但是没想到最先找我的是一家名不见经传的小厂，叫世优科技，是一家做VR和数字人的。一开始只给我180&#x2F;天，后来我说能不能给250，最后拉扯下来给200&#x2F;天。我想想也无所谓，反正随时可以跑路，赚点块钱无所谓。蛋疼的就算他们公司的位置，在一个朝阳区的废弃园区里，就是酒仙桥那边，每天晚上都大堵车。我又不想在那住宿舍，所以每天要花快两个小时打车通勤，花100块钱，加上吃饭，每天大概赚个几十块钱，不过9:30 - 18:00 的工作时间也无所谓了对我来说，有那么一瞬间我居然还想在那里转正虽然呆的很难受。</p>
+<p>难受的点在于，我在的部门主管思想有问题，什么代码交给AI就好了，你们只需要有想法。我还在想不是哥们你找的不是TA么 ，我怎么变成文案策划了，天天搞那些商场里的垃圾VR小游戏。和我一起去的另外两个实习生，两个小姐姐，代码没写过，git也没用过，图形学更是完全不知道是什么东西，我就挺无语的，又是教这个又是教那个，搞得心很累。中间那几天其实还穿插着各种面试，有腾讯的和西山居的。终于有一天，我腾讯的二面过了，然后恰巧那天被搞的心好烦，于是果断提了离职，大概待了两三周这样子。三月初我就走了，这辈子忘不了接到藤子offer那一刻的激动，有一些惶恐(我真的配吗)，有一些感动(你应得的)，有一些迷惑自己(今年hc多运气好而已)。不管怎么样，拿到offer那一刻真的是我四年来最激动的时刻之一。<img src="/./../images/2025final/4.jpg" alt="4"></p>
+<p>拿offer之前，我又去拔了智齿，因为又发炎了，好像每次去医院运气都不太好，24年是忘拿片子 一路小跑回宿舍拿完等了半天才拔上，25年则是压根去晚了没拿到号，但是因为着急 花大价钱去了诊所拔牙，留了一个大洞，因为牙根都扣出去了。一花就是一千多，校医院才不到100，后来想想其实压根不用那么着急，因为藤子的入职时间至少要等一周之后而且可以自选，我明明有充足的时间去等号，白白花了1k，在那家小厂相当于白干。果然人在上头的时候不能做任何决定，否则就只能吃亏了，我还觉得可能私人医疗是只有有钱人能享受的，后来发现我去的不过是另一种属于我们底层的韭菜医疗罢了。</p>
+</blockquote>
+<img src="./../images/2025final/5.jpg" alt="5" style="zoom:33%;">
+
+<blockquote>
+<p>三月末，我坐着飞机从北京再次飞到了深圳，回到了这个24年让我梦碎的地方。27号入职，在科兴，也就是毛星云前辈陨落的地方(还挺感慨的，毕竟刚入门时看过他的文章)，被分配了一个特效需求还是UE项目，当时就有一些麻爪了，但可能这就是考验吧。因为另一个实习生就是和我争这一个转正HC的，大家都没接触过的UE，都没接触过的Niagara，比谁先做出来。不过最后没争过，就被派到了异人做搬砖工作，也换了新mt。</p>
+<p>这部分我到不想再说一遍了，在我离职那天就全写在了知乎里<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1906671472908412893">【虾臂笔日记】回顾这一年（2024.5~2025.5） - 知乎</a></p>
+<p>简单地说就是换到另一个项目之后，我就感觉没戏转正了，导师的爱答不理，被分配的搬砖无意义工作，所以去拿了保底包括之前的西山居 以及 库库的洛。</p>
+<p>最后五月中旬被通知要回学校答辩，我提出了转正申请，因为我不想再飞回来飞回去了，最后被以时长不够为由拒绝。拒绝之后和我对接需求的erjunhuang同事还安慰我，非常感谢他。拿完最后一晚的科兴免费kfc，提前办理了公寓退房，5.18日，我飞回了北京，5.19日参加了结题答辩（很开心拿了优秀论文 虽然没什么含金量）。后续就是毕业相关的事宜，什么论文之类的，签三方之类的。 <a href="..%5Cimages%5C%E9%97%AB%E7%A1%95%E7%9A%84%E6%AF%95%E4%B8%9A%E8%AE%BA%E6%96%87.pdf">毕业论文.pdf</a> </p>
+</blockquote>
+<blockquote>
+<p>6.10 本着一直有拍银河的愿望，我独自一人坐了一天的车去了北京郊区的大山里，想弥补一下没能享受的娱乐时光。毕竟这四年没去校外玩过，也没参加过校内的什么活动，或许多少还是有些遗憾。于是坐了一天的车之后，我到了北京的郊区中的郊区山谷中。夏天很燥热，我带了驱蚊喷雾。但耐不住皮肤对野草过敏。很开心那天有营地老板的款待，唠了唠说很羡慕我，其实是有些诧异，毕竟其实我总是觉得自己不够优秀的。</p>
+</blockquote>
+<blockquote>
+<p>坐车很累，但值得。换了手机想拍银河，结果出门没注意时间和天气，晚上月亮很亮，月明星稀，只拍到些许星光。我特意挑了一个工作日，那只有我一个人，大晚上数不清的蚊虫，深山里的狼叫，当时真的很害怕。</p>
+<p><img src="/./../images/2025final/6.jpg" alt="6"></p>
+<p><img src="/./../images/2025final/7.jpg" alt="7"></p>
+<p><img src="/./../images/2025final/8.jpg" alt="8"></p>
+<p><img src="/./../images/2025final/9.jpg" alt="9"></p>
+</blockquote>
+<blockquote>
+<p>不过也许没有一时的冲动，我也不会有这么难忘的经历，第二天老板和老板娘说开车送我回市区，我到了一处地铁站，进入地铁看着门上玻璃自己的镜像，里面的人发型杂乱不堪，我感觉自己像一个野人刚返回人类社会。你问我这次经历如何，我会跟你说棒极了，但如果你问我还想不想再来一次，我可能再也不想了hhh，总之还是感谢热情老板的款待，那天真的很开心很开心。</p>
+</blockquote>
+<blockquote>
+<p>之后就是寻常的摆烂时间，然后被辅导员请去给低年级学生做求职分享，倾囊相授把我想说的都说出来了，感觉很畅快，我憋了四年的东西一股脑的倾斜出去，至于有没有人能理解体会就不知道了，应该很难，毕竟有些事不亲身经历其实很难理解。</p>
+<p>不过让我诧异的是，辅导员说大家对我的印象是 除了学习啥都没兴趣，只想学习什么的。我还以为我给大家的印象是一个自命不凡的死面瘫。hh听到的时候还挺高兴的。不过这也不是真实的我就是了。</p>
+</blockquote>
+<blockquote>
+<p>最后迎接这最后一刻，我的大学生涯彻底就结束了<img src="/./../images/2025final/10.JPG" alt="10"></p>
+<p><img src="/./../images/2025final/11.JPG" alt="11"></p>
+<p><img src="/./../images/2025final/12.JPG" alt="12"></p>
+<p><img src="/./../images/2025final/13.png" alt="13"></p>
+<img src="./../images/2025final/14.jpg" style="zoom:50%;">
+</blockquote>
+<blockquote>
+<p>走的前两天，学校食堂还给我们准备了好吃的，确实吃爽了，顺便给我爸带了四罐啤酒，毕竟我不喝。</p>
+</blockquote>
+<blockquote>
+<p>6.28我坐着飞机从沈阳飞往了广州，开始了新的生涯，磨碟沙的地铁很拥挤，到智慧城真的要很长时间。不过好在10月份我们搬到了这，现在只需要5分钟就可以到公司通勤。</p>
+<p>其实这后半年对我来说，没发生什么特殊的事情，有的只是日复一日的通勤和繁忙的学习工作，毕竟转到UE需要花很多时间。不过好在图形组的大家都很友善包容，氛围很好，所以工作也没什么其他压力，我只需要尽心做好自己的事情就好。后半年真的很平淡，我甚至朋友圈都很少发，不知不觉这半年居然就已经过去了。或许，以后的日子都会像这样平淡吧，再也没有了学生时期的上课听讲和听别人讲课做作业环节，我也不知道平淡的环境下我是否还能有奋起学习的劲头，谁知道呢，未来总是未知的，就像如果你问2021年的我 你觉得你4年之后能进入游戏行业的头部公司吗？我可能想都不敢想，但现在我做到了，或许这四年我得到的最宝贵的经验就是，不要急 多给自己一点时间，不需要焦虑，只管努力就好，剩下的交给时间。</p>
+</blockquote>
+<blockquote>
+<p>今年真的认识了很多很多人，经历了很多很多事，以后或以前或许都不会有今年这么曲折的经历了，大风大浪过后总会归于平淡。我对人心，对社会也有了更深刻的认识，其实这样来说，今年的收获还是挺多的。</p>
+<p>对于做游戏，我接手的项目还在初期，希望四五年后能交给玩家们一个满意的作品，完成我人生中第一个项目。</p>
+<p>五道口的故事结束了</p>
+<p>丰台区诺德的故事结束了</p>
+<p>深圳湾科技生态园的故事结束了</p>
+<p>朝阳区酒仙桥的故事结束了</p>
+<p>科兴科学园的故事结束了（去过了毛星云前辈呆过的大厦）</p>
+<p>磨碟沙的故事也结束了</p>
+<p>但智慧城的故事，越过高山的故事，才刚刚开始</p>
+<p><img src="/./../images/2025final/15.jpg" alt="15"></p>
+<p><img src="/./../images/2025final/16.png" alt="16"></p>
+<p><img src="/./../images/2025final/17.jpg" alt="17"></p>
+</blockquote>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2022 - 2026 Yhisken&#39;s blog
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Yhisken
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+                </div>
+            </transition>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
+
+
+        
+    </body>
+</html>
